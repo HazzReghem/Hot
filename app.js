@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 const app = express();
 
 const path = require('path');
@@ -6,7 +7,7 @@ const path = require('path');
 const sauceRoutes = require('./routes/Sauce');
 const userRoutes = require('./routes/user');
 
-
+app.use(helmet());
 app.use(express.json());
 
 const mongoose = require('mongoose');
