@@ -2,6 +2,8 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 
+require('dotenv').config();
+
 const path = require('path');
 
 const sauceRoutes = require('./routes/Sauce');
@@ -11,7 +13,7 @@ app.use(helmet());
 app.use(express.json());
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://Hazzu:b8kPtu3ziypCPlK8@hottakes.yz1zghk.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(process.env.DATABASE_URL,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
